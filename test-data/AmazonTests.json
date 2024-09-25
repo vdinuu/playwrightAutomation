@@ -1,0 +1,14 @@
+{
+  "TC_01": {
+    "userName": "test@gmail.com",
+    "password": "Testing#2323",
+    "errorText": "incorrect"
+  },
+  "TC_02": {
+    "productName": "iphone",
+    "desiredProduct": "Apple iPhone 13"
+  },
+  "TC_03": {
+    "productName": "iphone"
+  }
+}

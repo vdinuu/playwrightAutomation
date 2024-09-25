@@ -8,10 +8,12 @@ class ProductDetailsPage {
     this.noThanksBtn = page.locator("span#attachSiNoCoverage");
     this.alert = page.locator("h1.a-size-medium-plus");
     this.goToCartBtn = page.locator("a[href*='sw_gtc']");
+    this.productPrice = page.locator(
+      "div.a-section span.reinventPricePriceToPayMargin"
+    );
   }
 
   async validateProductDetails(productName) {
-    // await this.productTitle.waitFor();
     expect(await this.productTitle.textContent()).toContain(productName);
   }
 
@@ -25,6 +27,15 @@ class ProductDetailsPage {
   async goToCart() {
     await this.goToCartBtn.click();
     await this.page.waitForLoadState("load");
+  }
+
+  async getProductPrice() {
+    const price = await this.productPrice.first().textContent();
+    return Number(price.trim().substring(1));
+  }
+
+  async verifyPrice(price) {
+    expect(await this.getProductPrice()).toBe(price);
   }
 }
 module.exports = { ProductDetailsPage };
